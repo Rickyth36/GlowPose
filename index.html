@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GlowPose — Turn your camera into a magic effects playground</title>
+<meta name="description" content="GlowPose turns your webcam into a free playground — fire, lightning, anime energy blasts, superhero powers — triggered by your real hands and face. Record a clip and share it. No app, no signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header id="navbar">
+  <nav>
+    <a href="#top" class="logo"><span class="glow">Glow</span><span>Pose</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#demo">Play Now</a></li>
+      <li><a href="#effects">Effects</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#usecases">Ideas</a></li>
+    </ul>
+
+    <div class="nav-right">
+      <a class="pill-btn" href="#demo">Open Camera — Free</a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <a href="#demo">Play Now</a>
+    <a href="#effects">Effects</a>
+    <a href="#how">How It Works</a>
+    <a href="#usecases">Ideas</a>
+    <a class="pill-btn" style="text-align:center" href="#demo">Open Camera — Free</a>
+  </div>
+</header>
+
+<!-- ============ AD SLOT: leaderboard below navbar ============ -->
+<!-- AD SLOT 0: 728x90 leaderboard, hidden on mobile -->
+<div class="ad-slot ad-leaderboard"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <div class="container hero-grid">
+    <div style="text-align:center; max-width:760px; margin:0 auto;">
+      <span class="badge">✦ No app, no signup — just open your camera</span>
+      <h1>Turn your hands into magic, live on camera</h1>
+      <p class="hero-sub" style="margin:0 auto 30px;">GlowPose turns your webcam into a playground — fire, lightning, anime energy blasts, superhero powers — triggered by your real hands and face. Free forever. Record a clip and share it.</p>
+      <div class="cta-row" style="justify-content:center;">
+        <a href="#demo" class="glow-btn">Play with it now ↓</a>
+        <a href="#effects" class="pill-btn-outline">See all effects →</a>
+      </div>
+      <p class="trust-line">Works in any browser · Nothing uploaded · No account · Free forever</p>
+    </div>
+
+    <div class="canvas-wrap" id="demo">
+      <div class="effect-tabs" id="heroTabs"><!-- tabs are generated from EFFECTS at runtime --></div>
+      <div class="stage" id="stage">
+        <video class="webcam-video" id="webcamVideo" playsinline muted></video>
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <span class="cam-status" id="camStatus"><span class="dot"></span> Live tracking</span>
+        <span class="rec-indicator" id="recIndicator"><span class="rec-dot"></span><span id="recTimeText"> Recording…</span></span>
+      </div>
+      <div class="stage-actions">
+        <button class="cam-btn" id="enableCamBtn">📷 Open your camera to play</button>
+        <button class="cam-btn record-btn" id="recordBtn">⏺ Record a clip</button>
+      </div>
+      <p class="cam-note">Camera access runs entirely in your browser — nothing is ever uploaded or stored.</p>
+      <div class="rec-result" id="recResult" style="display:none;">
+        <video class="rec-preview" id="recPreview" controls playsinline></video>
+        <div class="rec-result-actions">
+          <label class="format-select-wrap">
+            Format
+            <select id="formatSelect" class="format-select"></select>
+          </label>
+          <a class="pill-btn" id="downloadClipBtn" download="glowpose-clip.webm">⬇ Download clip</a>
+          <button class="pill-btn-outline" id="discardClipBtn">Discard</button>
+        </div>
+        <p class="rec-quality-note">Recorded at full canvas resolution and a high bitrate — not re-compressed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AD SLOT 1: between hero and effects ============ -->
+<!-- AD SLOT 1: 300x250 rectangle, centered -->
+<div class="ad-slot ad-rect reveal"></div>
+
+<!-- ============ EFFECTS SHOWCASE ============ -->
+<section class="section" id="effects">
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Every effect. One camera.</h2>
+      <p>30+ effects triggered by your real hands and face — click any one to try it live.</p>
+    </div>
+
+    <div class="effects-layout">
+      <div class="effects-main">
+        <div class="effects-grid" id="effectsGrid"></div>
+      </div>
+
+      <!-- ============ AD SLOT: sidebar sticky ============ -->
+      <div class="sidebar-ad-wrap">
+        <!-- AD SLOT 2: 300x600 sticky sidebar, desktop only -->
+        <div class="ad-slot ad-sidebar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>How it works</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-icon" style="background:rgba(127,119,221,.15); color:var(--violet);">1</div>
+        <h3>Open your camera</h3>
+        <p>One click, right in your browser. No app, no install, no account.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon" style="background:rgba(216,90,48,.15); color:var(--coral);">2</div>
+        <h3>Pick an effect</h3>
+        <p>Particles, fire, lightning, anime energy blasts, superhero powers — 30+ to try.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon" style="background:rgba(29,158,117,.15); color:var(--teal);">3</div>
+        <h3>Record & share</h3>
+        <p>Hit record, make a clip, and send it to friends or post it. It's free forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRO TIPS ============ -->
+<section class="section" id="code-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Get the best clip.</h2>
+      <p>A few tricks that make for a way more shareable moment.</p>
+    </div>
+
+    <div class="usecase-grid">
+      <div class="usecase-card reveal">
+        <div class="usecase-icon">✊</div>
+        <h3>Hold a fist to charge</h3>
+        <p>Clench your hand and hold it — power builds up around your fist the longer you hold, with the effect's own colors and style.</p>
+      </div>
+      <div class="usecase-card reveal">
+        <div class="usecase-icon">💥</div>
+        <h3>Release for the blast</h3>
+        <p>Open your fist to unleash everything you charged up — bigger holds mean a bigger, more dramatic blast on camera.</p>
+      </div>
+      <div class="usecase-card reveal">
+        <div class="usecase-icon">🤜🤛</div>
+        <h3>Combine both fists</h3>
+        <p>Bring two charged fists together to merge their power into one much bigger combo blast — pull apart to split it again.</p>
+      </div>
+      <div class="usecase-card reveal">
+        <div class="usecase-icon">✌️</div>
+        <h3>Try hand signs</h3>
+        <p>✌️ peace sign for confetti, 👍 thumbs up for floating hearts, ✋ open palm for a force push, 👉 point to fire a laser — on top of any effect.</p>
+      </div>
+    </div>
+
+    <div class="feature-pills reveal">
+      <span class="feature-pill">Runs entirely in your browser</span>
+      <span class="feature-pill">Nothing ever uploaded</span>
+      <span class="feature-pill">Free forever, no account</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AD SLOT: between code and use cases ============ -->
+<!-- AD SLOT 3: 728x90 leaderboard, hidden on mobile -->
+<div class="ad-slot ad-leaderboard reveal"></div>
+
+<!-- ============ USE CASES ============ -->
+<section class="section" id="usecases">
+  <div class="container">
+    <div class="section-heading reveal">
+      <h2>Built for every builder.</h2>
+      <p>GlowPose works wherever creativity meets interaction.</p>
+    </div>
+    <div class="usecase-grid" id="usecaseGrid"></div>
+  </div>
+</section>
+
+<!-- ============ AD SLOT: before footer ============ -->
+<!-- AD SLOT 4: 300x250 rectangle, centered -->
+<div class="ad-slot ad-rect reveal"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="footer-glow"></div>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo"><span class="glow">Glow</span><span>Pose</span></a>
+        <p class="footer-tagline">Your body. Your canvas.</p>
+        <div class="social-row">
+          <a href="#" onclick="return false;">GH</a>
+          <a href="#" onclick="return false;">X</a>
+          <a href="#" onclick="return false;">DC</a>
+          <a href="#" onclick="return false;">YT</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#effects">All Effects</a></li>
+          <li><a href="#demo">Play Now</a></li>
+          <li><a href="#how">How It Works</a></li>
+          <li><a href="#usecases">Ideas & Use Cases</a></li>
+          <li><a href="#" onclick="return false;">What's New</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#code-section">Tips for Better Clips</a></li>
+          <li><a href="#" onclick="return false;">Share Your Clip</a></li>
+          <li><a href="#" onclick="return false;">Help & FAQ</a></li>
+          <li><a href="#" onclick="return false;">Feedback</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#" onclick="return false;">About</a></li>
+          <li><a href="#" onclick="return false;">Blog</a></li>
+          <li><a href="#" onclick="return false;">Contact</a></li>
+          <li><a href="#" onclick="return false;">Privacy Policy</a></li>
+          <li><a href="#" onclick="return false;">Terms of Service</a></li>
+          <li><a href="#" onclick="return false;">Advertise with Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 GlowPose · Made in India · Free forever · Powered by MediaPipe
+    </div>
+  </div>
+</footer>
+
+<!-- ============ MOBILE STICKY AD ============ -->
+<!-- AD SLOT 5: 320x50 mobile-only sticky banner -->
+<div class="mobile-ad-bar" id="mobileAdBar">
+  <div class="ad-slot ad-mobile" style="margin:0;"></div>
+  <button class="mobile-ad-close" id="mobileAdClose">✕</button>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

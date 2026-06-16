@@ -1,0 +1,8 @@
+#code-section{ background:var(--bg); }
+#code-section .usecase-grid{ margin-bottom:10px; }
+
+.feature-pills{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:34px; }
+.feature-pill{
+  background:var(--surface); border:1px solid rgba(255,255,255,.08); padding:10px 18px;
+  border-radius:999px; font-size:13px; color:var(--text); font-weight:500;
+}

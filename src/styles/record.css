@@ -1,0 +1,22 @@
+.rec-indicator{
+  position:absolute; top:14px; left:14px; z-index:5; font-size:12px; font-weight:600;
+  padding:5px 12px; border-radius:999px; background:rgba(0,0,0,.55); color:#ff4d4d;
+  display:none; align-items:center; gap:6px;
+}
+.rec-indicator.show{ display:flex; }
+.rec-indicator .rec-dot{ width:8px; height:8px; border-radius:50%; background:#ff4d4d; animation:pulse 1s infinite; }
+
+.rec-result{
+  margin-top:18px; padding:18px; background:#0b0b16; border:1px solid rgba(127,119,221,.2);
+  border-radius:14px; position:relative; z-index:5;
+}
+.rec-preview{ width:100%; max-width:420px; border-radius:10px; display:block; margin:0 auto 14px; background:#000; }
+.rec-result-actions{ display:flex; gap:12px; justify-content:center; align-items:center; flex-wrap:wrap; }
+.format-select-wrap{
+  display:flex; align-items:center; gap:8px; font-size:13px; color:var(--muted); font-weight:600;
+}
+.format-select{
+  background:#15151f; color:#fff; border:1px solid rgba(255,255,255,.15); border-radius:8px;
+  padding:8px 12px; font-size:13px; font-weight:600; font-family:inherit;
+}
+.rec-quality-note{ text-align:center; font-size:11px; color:var(--muted); margin-top:12px; }

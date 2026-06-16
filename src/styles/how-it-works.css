@@ -1,0 +1,16 @@
+#how{ background:var(--surface); }
+.steps{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:40px; position:relative;
+}
+@media (max-width:860px){ .steps{ grid-template-columns:1fr; gap:50px; } }
+.step{ text-align:center; position:relative; }
+.step-icon{
+  width:64px; height:64px; border-radius:18px; display:flex; align-items:center; justify-content:center;
+  font-size:28px; margin:0 auto 18px; font-weight:800;
+}
+.step h3{ font-size:20px; margin-bottom:10px; }
+.step p{ color:var(--muted); font-size:15px; max-width:280px; margin:0 auto; }
+.step-arrow{
+  position:absolute; top:32px; right:-30px; color:var(--muted); font-size:24px;
+}
+@media (max-width:860px){ .step-arrow{ display:none; } }

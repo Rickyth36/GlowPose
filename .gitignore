@@ -1,0 +1,7 @@
+node_modules
+dist
+.DS_Store
+*.local
+.claude
+# regenerated from node_modules via the postinstall script — see scripts/copy-mediapipe-wasm.js
+public/mediapipe
