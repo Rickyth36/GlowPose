@@ -258,8 +258,16 @@ export function initCameraButton(){
     const btn = document.getElementById('enableCamBtn');
     btn.textContent = '⏳ Starting camera…';
     try{
+      // the stage displays 9:16 portrait on phones — request a matching portrait stream
+      // there so the feed isn't cropped down from a landscape capture
+      const isMobileStage = window.matchMedia('(max-width: 680px)').matches;
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: {
+        video: isMobileStage ? {
+          facingMode:'user',
+          width: { min: 720, ideal: 1080, max: 1080 },
+          height: { min: 1280, ideal: 1920, max: 1920 },
+          aspectRatio: { ideal: 9/16 }
+        } : {
           facingMode:'user',
           width: { min: 1280, ideal: 1920, max: 1920 },
           height: { min: 720, ideal: 1080, max: 1080 },
