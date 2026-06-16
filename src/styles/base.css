@@ -54,7 +54,8 @@ code, pre{font-family:'JetBrains Mono', monospace;}
 
 /* ---------- Shared pill buttons ---------- */
 .pill-btn{
-  background:var(--violet); color:#fff; padding:10px 20px; border-radius:999px;
+  background:linear-gradient(135deg, var(--violet), var(--pink));
+  color:#fff; padding:10px 20px; border-radius:999px;
   font-weight:600; font-size:14px; transition:transform .2s, box-shadow .2s;
   display:inline-block;
 }

@@ -54,26 +54,56 @@ export function selectHeroEffect(type){
   state.currentEffect = type;
   resetHeroState();
   resetGestureFX();
+  // reset the category filter back to "all" so the newly active tab is guaranteed visible
+  document.querySelectorAll('#effectFilters .filter-chip').forEach(c=>{
+    c.classList.toggle('active', c.dataset.tag === 'ALL');
+  });
   document.querySelectorAll('#heroTabs .effect-tab').forEach(b=>{
     b.classList.toggle('active', b.dataset.effect === type);
+    b.classList.remove('filtered-out');
   });
   document.getElementById('demo').scrollIntoView({ behavior:'smooth', block:'center' });
 }
 
 function buildHeroTabs(){
-  // build hero tabs from the same EFFECTS list used by the showcase grid
+  // build hero tabs from the same EFFECTS list used by the showcase grid — each tab carries
+  // a color dot matching its effect's brand color, used for the gradient active state too
   const heroTabsEl = document.getElementById('heroTabs');
   EFFECTS.forEach(fx=>{
     const btn = document.createElement('button');
     btn.className = 'effect-tab' + (fx.type === state.currentEffect ? ' active' : '');
     btn.dataset.effect = fx.type;
-    btn.textContent = fx.name;
+    btn.dataset.tag = fx.tag;
+    btn.style.setProperty('--tab-color', fx.color);
+    btn.innerHTML = `<span class="tab-dot"></span>${fx.name}`;
     btn.addEventListener('click', ()=> selectHeroEffect(fx.type));
     heroTabsEl.appendChild(btn);
   });
 }
 
+function buildEffectFilters(){
+  // quick category chips so picking an effect doesn't mean scrolling through all 28 tabs
+  const filtersEl = document.getElementById('effectFilters');
+  const tags = ['ALL', ...new Set(EFFECTS.map(fx => fx.tag))];
+
+  tags.forEach(tag => {
+    const chip = document.createElement('button');
+    chip.className = 'filter-chip' + (tag === 'ALL' ? ' active' : '');
+    chip.dataset.tag = tag;
+    chip.textContent = tag;
+    chip.addEventListener('click', () => {
+      filtersEl.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c === chip));
+      document.querySelectorAll('#heroTabs .effect-tab').forEach(tabBtn => {
+        const matches = tag === 'ALL' || tabBtn.dataset.tag === tag;
+        tabBtn.classList.toggle('filtered-out', !matches);
+      });
+    });
+    filtersEl.appendChild(chip);
+  });
+}
+
 export function initHeroEngine(){
+  buildEffectFilters();
   buildHeroTabs();
   resizeHero();
   requestAnimationFrame(renderHero);

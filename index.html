@@ -60,30 +60,39 @@
       <p class="trust-line">Works in any browser · Nothing uploaded · No account · Free forever</p>
     </div>
 
-    <div class="canvas-wrap" id="demo">
-      <div class="effect-tabs" id="heroTabs"><!-- tabs are generated from EFFECTS at runtime --></div>
-      <div class="stage" id="stage">
-        <video class="webcam-video" id="webcamVideo" playsinline muted></video>
-        <canvas class="hero-canvas" id="heroCanvas"></canvas>
-        <span class="cam-status" id="camStatus"><span class="dot"></span> Live tracking</span>
-        <span class="rec-indicator" id="recIndicator"><span class="rec-dot"></span><span id="recTimeText"> Recording…</span></span>
-      </div>
-      <div class="stage-actions">
-        <button class="cam-btn" id="enableCamBtn">📷 Open your camera to play</button>
-        <button class="cam-btn record-btn" id="recordBtn">⏺ Record a clip</button>
-      </div>
-      <p class="cam-note">Camera access runs entirely in your browser — nothing is ever uploaded or stored.</p>
-      <div class="rec-result" id="recResult" style="display:none;">
-        <video class="rec-preview" id="recPreview" controls playsinline></video>
-        <div class="rec-result-actions">
-          <label class="format-select-wrap">
-            Format
-            <select id="formatSelect" class="format-select"></select>
-          </label>
-          <a class="pill-btn" id="downloadClipBtn" download="glowpose-clip.webm">⬇ Download clip</a>
-          <button class="pill-btn-outline" id="discardClipBtn">Discard</button>
+    <div class="demo-layout">
+      <div class="canvas-wrap" id="demo">
+        <div class="effect-filters" id="effectFilters"><!-- category chips generated from EFFECTS at runtime --></div>
+        <div class="effect-tabs" id="heroTabs"><!-- tabs are generated from EFFECTS at runtime --></div>
+        <div class="stage" id="stage">
+          <video class="webcam-video" id="webcamVideo" playsinline muted></video>
+          <canvas class="hero-canvas" id="heroCanvas"></canvas>
+          <span class="cam-status" id="camStatus"><span class="dot"></span> Live tracking</span>
+          <span class="rec-indicator" id="recIndicator"><span class="rec-dot"></span><span id="recTimeText"> Recording…</span></span>
         </div>
-        <p class="rec-quality-note">Recorded at full canvas resolution and a high bitrate — not re-compressed.</p>
+        <div class="stage-actions">
+          <button class="cam-btn" id="enableCamBtn">📷 Open your camera to play</button>
+          <button class="cam-btn record-btn" id="recordBtn">⏺ Record a clip</button>
+        </div>
+        <p class="cam-note">Camera access runs entirely in your browser — nothing is ever uploaded or stored.</p>
+        <div class="rec-result" id="recResult" style="display:none;">
+          <video class="rec-preview" id="recPreview" controls playsinline></video>
+          <div class="rec-result-actions">
+            <label class="format-select-wrap">
+              Format
+              <select id="formatSelect" class="format-select"></select>
+            </label>
+            <a class="pill-btn" id="downloadClipBtn" download="glowpose-clip.webm">⬇ Download clip</a>
+            <button class="pill-btn-outline" id="discardClipBtn">Discard</button>
+          </div>
+          <p class="rec-quality-note">Recorded at full canvas resolution and a high bitrate — not re-compressed.</p>
+        </div>
+      </div>
+
+      <!-- ============ AD SLOT: beside the camera demo, sticky on desktop ============ -->
+      <!-- AD SLOT 1b: 300x600 sticky sidebar, visible while playing, desktop only -->
+      <div class="demo-ad-wrap">
+        <div class="ad-slot ad-sidebar"></div>
       </div>
     </div>
   </div>
