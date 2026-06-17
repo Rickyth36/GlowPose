@@ -19,7 +19,7 @@ export function drawEffectAtAnchor(fx, tip, time){
     if(Math.random() < 0.9){
       const flicker = Math.random();
       const flameColor = flicker<0.25 ? '#fff5cc' : flicker<0.65 ? '#d8a13a' : '#D85A30';
-      state.heroParticles.push(spawnParticle(tip.x, tip.y, { angle:-Math.PI/2+(Math.random()-0.5)*0.9, speed:0.8+Math.random()*1.8, color: flameColor, gravity:-0.018-Math.random()*0.01, decay:0.02+Math.random()*0.015, size:1.5+Math.random()*3, growth:-0.02 }));
+      state.heroParticles.push(spawnParticle(tip.x, tip.y, { angle:-Math.PI/2+(Math.random()-0.5)*0.9, speed:0.8+Math.random()*1.8, color: flameColor, gravity:-0.018-Math.random()*0.01, decay:0.02+Math.random()*0.015, size:5+Math.random()*9, growth:-0.02 }));
     }
   } else if(fx === 'confetti'){
     if(Math.random() < 0.9) state.heroParticles.push(spawnParticle(tip.x, tip.y, { speed:1+Math.random()*3, color: PARTICLE_COLORS[Math.floor(Math.random()*PARTICLE_COLORS.length)], gravity:0.05, decay:0.012, shape:'ellipse', rot:Math.random()*Math.PI*2, spin:(Math.random()-0.5)*0.3, size:3+Math.random()*2 }));

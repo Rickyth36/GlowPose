@@ -149,6 +149,7 @@ function palmCenter(lm){
   return { x, y };
 }
 
+
 // MediaPipe's detectForVideo() requires a strictly increasing timestamp per landmarker
 // instance — two calls with the same (or an out-of-order) timestamp throw. That's rare but
 // real, and without guarding against it, a single bad frame permanently kills the

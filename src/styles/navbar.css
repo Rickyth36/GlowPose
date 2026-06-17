@@ -31,3 +31,8 @@ nav{
   .nav-links{ display:none; }
   .hamburger{ display:flex; }
 }
+@media (max-width:480px){
+  nav{ padding:12px 14px; }
+  .logo{ font-size:18px; }
+  .nav-right .pill-btn{ display:none; }
+}
