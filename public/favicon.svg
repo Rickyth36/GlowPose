@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#b8b0ff"/>
+      <stop offset="100%" stop-color="#7f77dd"/>
+    </radialGradient>
+    <radialGradient id="core" cx="50%" cy="60%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="60%" stop-color="#c4beff"/>
+      <stop offset="100%" stop-color="#7f77dd"/>
+    </radialGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="2.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- background circle -->
+  <circle cx="32" cy="32" r="30" fill="#0d0d1a"/>
+
+  <!-- glow halo -->
+  <circle cx="32" cy="32" r="18" fill="url(#glow)" opacity="0.35" filter="url(#blur)"/>
+
+  <!-- hand / wand shape — stylised open palm -->
+  <!-- palm base -->
+  <rect x="23" y="36" width="18" height="10" rx="4" fill="url(#core)"/>
+
+  <!-- fingers -->
+  <rect x="23" y="22" width="4" height="16" rx="2" fill="url(#core)"/>
+  <rect x="29" y="19" width="4" height="19" rx="2" fill="url(#core)"/>
+  <rect x="35" y="21" width="4" height="17" rx="2" fill="url(#core)"/>
+
+  <!-- thumb -->
+  <rect x="17" y="31" width="8" height="4" rx="2" fill="url(#core)" transform="rotate(-20 21 33)"/>
+
+  <!-- sparkles -->
+  <circle cx="44" cy="16" r="2" fill="#ff6b9d" opacity="0.9"/>
+  <circle cx="50" cy="24" r="1.4" fill="#ffd700" opacity="0.85"/>
+  <circle cx="14" cy="20" r="1.6" fill="#4de8d4" opacity="0.85"/>
+  <circle cx="48" cy="34" r="1.2" fill="#b8b0ff" opacity="0.8"/>
+
+  <!-- star accents -->
+  <path d="M44 14 L44.6 15.4 L46 16 L44.6 16.6 L44 18 L43.4 16.6 L42 16 L43.4 15.4Z" fill="#ff6b9d"/>
+  <path d="M13 18 L13.5 19.2 L14.7 19.7 L13.5 20.2 L13 21.4 L12.5 20.2 L11.3 19.7 L12.5 19.2Z" fill="#4de8d4"/>
+</svg>
