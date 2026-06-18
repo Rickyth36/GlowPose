@@ -1,6 +1,13 @@
-import { FilesetResolver, HandLandmarker, FaceLandmarker } from '@mediapipe/tasks-vision';
 import { EFFECT_TRACK } from '../data/effects.js';
 import { state, webcamVideo, camStatus } from './heroState.js';
+
+// MediaPipe is loaded dynamically (not bundled) so it doesn't block the initial page render.
+// These are populated on first camera use and reused for the session.
+let FilesetResolver, HandLandmarker, FaceLandmarker;
+async function loadMediaPipe(){
+  if(FilesetResolver) return;
+  ({ FilesetResolver, HandLandmarker, FaceLandmarker } = await import('@mediapipe/tasks-vision'));
+}
 
 function simulatedEyePos(time){
   const cx = state.heroW * 0.5, cy = state.heroH * 0.4;
@@ -69,6 +76,7 @@ export function trackedAnchors(time, fx){
 let visionFileset = null;
 async function getVisionFileset(){
   if(!visionFileset){
+    await loadMediaPipe();
     visionFileset = await FilesetResolver.forVisionTasks('/mediapipe/wasm');
   }
   return visionFileset;
